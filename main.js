@@ -7,7 +7,6 @@ const mirror = document.getElementById('mirror')
 
 let lastMessage
 
-// addMessage('hi', 'left')
 function addMessage(text, sender){ 
   if(text === '') {
     return
@@ -16,7 +15,6 @@ function addMessage(text, sender){
   newLi.textContent = text
   newLi.className = sender + 'Message'
   function showAlert() {
-    // center.removeChild(newLi)
     newLi.innerHTML = "123"
     center.removeChild(lastMessage)
   }
@@ -26,7 +24,6 @@ function addMessage(text, sender){
 }
 
 function newLmessage() {
-   // newLi.appendChild(text)
     addMessage(ltxt.value, 'left')
     ltxt.value = ''
 }
