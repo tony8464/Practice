@@ -4,7 +4,7 @@
     width: 85vw;
     flex-direction: row;
 }
-.leftside, .rightside, .center{
+.leftSide, .rightSide, .center{
     flex: 1;
     display: flex;
     flex-direction: column;
@@ -12,17 +12,14 @@
     align-items: center;
     padding: 6px 6px;
 }
-.leftside{
-    order: 1;
+.leftSide{
     background-color:#92B558;
 }
-.rightside{
-    order: 3;
+.rightSide{
     background-color: #4F84C4;
 }
 .center{
     flex:2;
-    order: 1;
     }
 input[type=text]{
     width: 90%;
@@ -33,13 +30,14 @@ input[type=text]{
     box-sizing: border-box;
 }
 input[type=text]:focus{
-    border-color: dodgerBlue;
-    box-shadow: 0 0 8px 0 dodgerBlue;
+    border-color: rgb(250, 251, 252);
+    box-shadow: 0 0 8px 0 rgb(250, 251, 252);
 }
 .leftMessageBox, .rightMessageBox{
     display: flex;
     flex-direction: row;
-    margin: 4px;
+    margin: 2px;
+    flex-direction: column;
 }
 .leftMessageBox{
     align-self: flex-start;
@@ -52,13 +50,13 @@ input[type=text]:focus{
     padding: 6px;
     margin: 1px;
     display: flex;
-    order: 2;
 }
 .leftMessageText{
     background-color:#92B558;
 }
 .rightMessageText{    
     background-color: #4F84C4;
+    align-self: flex-end;
 }
 .leftDelButton, .rightDelButton{
     align-self: flex-start;
@@ -67,9 +65,7 @@ input[type=text]:focus{
     font-size: 8px;
     -moz-user-select: none;
 }
-.leftDelButton{
-    order: 1;
-}
+
 .leftDelButton:hover ~ .leftMessageText{
     background-color: crimson;
     
@@ -77,15 +73,12 @@ input[type=text]:focus{
 .rightDelButton:hover ~ .rightMessageText{
     background-color: crimson;
 }
-.rightDelButton{
-    order: 3;
-}
 .rightTimeStamp, .leftTimeStamp{
     align-self: center;
     font-size: 8px;
-    margin: 5px;
+    margin: 2px;
     opacity: 0.45;
 }
-.leftTimeStamp{
-    order: 3;
+.rightDelButton{
+    align-self: flex-end;
 }

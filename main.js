@@ -1,62 +1,65 @@
-const leftButton = document.getElementById("leftButton")
-const rightButton = document.getElementById("rightButton")
-const leftTextInput = document.getElementById("leftTextInput")
+const leftButton = document.getElementById("leftButton");
+const rightButton = document.getElementById("rightButton");
+const leftTextInput = document.getElementById("leftTextInput");
 const rightTextInput = document.getElementById("rightTextInput");
-const center = document.getElementById("center")
-const mirror = document.getElementById('mirror')
+const center = document.getElementById("center");
 
-function addMessage(text, sender){ 
-  if(text === '') {
+function addMessage(text, sender, nextSender) {
+  if (text === '') {
     return
   }
-  const MessageBox = document.createElement("div");
-  const DelButton = document.createElement("div");
-  const MessageText = document.createElement("div");  
-  const TimeStamp = document.createElement('div');
+  const messageBox = document.createElement("div");
+  const delButton = document.createElement("div");
+  const messageText = document.createElement("div");
+  const timeStamp = document.createElement('div');
+  const n = new Date();
+  const date = n.toDateString();
+  const time = n.toLocaleTimeString();
 
-  MessageBox.className = sender + "MessageBox"
-  DelButton.className = sender + "DelButton"
-  MessageText.className = sender + "MessageText"
-  TimeStamp.className = sender + "TimeStamp"
+  messageBox.className = sender + "MessageBox";
+  delButton.className = sender + "DelButton";
+  messageText.className = sender + "MessageText";
+  timeStamp.className = sender + "TimeStamp";
 
-  MessageText.textContent = text
-  DelButton.textContent = "🗑️"
-  TimeStamp.textContent = "10/26/19 9:04am"
+  messageText.textContent = text;
+  delButton.textContent = "🗑️";
+  timeStamp.textContent = date + ', ' + time;
 
-  MessageBox.appendChild(DelButton)
-  MessageBox.appendChild(MessageText)
-  MessageBox.appendChild(TimeStamp)
+  messageBox.appendChild(delButton);
+  messageBox.appendChild(messageText);
+  messageBox.appendChild(timeStamp);
 
-  center.appendChild(MessageBox); 
+  center.appendChild(messageBox);
 
-  DelButton.addEventListener('click', removeMessage)
-  function removeMessage(){
-    center.removeChild(MessageBox)
+  (eval(sender + 'TextInput')).value = '';
+ 
+  document.getElementById(nextSender + 'TextInput').focus();
+  function removeMessage() {
+    center.removeChild(messageBox)
+  }
+  delButton.addEventListener('click', removeMessage)
 }
+
+function newLeftMessage() {
+  addMessage(leftTextInput.value, 'left', 'right')
 }
-function newLeftmessage() {
-    addMessage(leftTextInput.value, 'left')
-    leftTextInput.value = '';
-}
-function newRightmessage(){  
-  addMessage(rightTextInput.value, 'right')
-  rightTextInput.value = '';
+function newRightMessage() {
+  addMessage(rightTextInput.value, 'right', 'left')
 }
 
 function enterLeft(event) {
-  mirror.textContent = 'last pressed keyCode: ' + event.keyCode
+  //mirror.textContent = 'last pressed keyCode: ' + event.keyCode
   if (event.keyCode === 13) {
-    NewLeftmessage() 
+    newLeftMessage()
   }
 }
-function enterRight (event){
-  if (event.keyCode ===13) {
-    newRightmessage()
+function enterRight(event) {
+  if (event.keyCode === 13) {
+    newRightMessage()
   }
 }
 
-leftTextInput.addEventListener('keyup', enterLeft)
-rightTextInput.addEventListener('keyup', enterRight)
-
-leftButton.addEventListener('click', newLeftmessage);
-rightButton.addEventListener('click', newRightmessage)
+leftTextInput.addEventListener('keyup', enterLeft);
+rightTextInput.addEventListener('keyup', enterRight);
+leftButton.addEventListener('click', newLeftMessage);
+rightButton.addEventListener('click', newRightMessage);
