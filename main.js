@@ -39,14 +39,12 @@ function addMessage(text, sender, nextSender) {
   }
   delButton.addEventListener('click', removeMessage)
 }
-
 function newLeftMessage() {
   addMessage(leftTextInput.value, 'left', 'right')
 }
 function newRightMessage() {
   addMessage(rightTextInput.value, 'right', 'left')
 }
-
 function enterLeft(event) {
   //mirror.textContent = 'last pressed keyCode: ' + event.keyCode
   if (event.keyCode === 13) {
@@ -58,7 +56,6 @@ function enterRight(event) {
     newRightMessage()
   }
 }
-
 leftTextInput.addEventListener('keyup', enterLeft);
 rightTextInput.addEventListener('keyup', enterRight);
 leftButton.addEventListener('click', newLeftMessage);
