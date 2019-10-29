@@ -53,6 +53,7 @@ input[type=text]:focus{
 }
 .leftMessageText{
     background-color:#92B558;
+    align-self: flex-start;
 }
 .rightMessageText{    
     background-color: #4F84C4;
